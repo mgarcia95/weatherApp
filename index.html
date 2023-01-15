@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Web Programming - Practice / Weather App</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;900&display=swap" rel="stylesheet">
+
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body class=""><!-- add "has-overlay" class for detail view -->
+
+        <div class="header">
+
+            <h1 class="title">🌦 Weather App</h1>
+            <div class="searchbox js-searchbox">
+                <div class="searchbox__content">
+                    <input class="field field--search js-search-input" type="text" placeholder="Search for zip codes...">
+                    <button class="btn btn--search js-search-btn">Search</button>
+                    <svg class="field-icon" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Search</title><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></svg>
+                </div>
+                <p class="searchbox__feedback js-search-feedback d-none">Introduce a valid postcode</p>
+            </div>
+
+        </div>
+
+        <article class="list">
+
+            <header class="list__header">
+                <p class="js-list-info">Location at ZIPCODE "41012"</p>
+
+                <article class="result">
+                    <div class="result__item">
+                        <label class="result__item-label">ZIPCODE</label>
+                        <span class="result__item-value js-location-zip">41012</span>
+                    </div>
+                    <div class="result__item">
+                        <label class="result__item-label">LOCATION</label>
+                        <span class="result__item-value js-location-name">Seville</span>
+                    </div>
+                    <div class="result__item">
+                        <label class="result__item-label">LATITUDE</label>
+                        <span class="result__item-value js-location-lat">37.3824</span>
+                    </div>
+                    <div class="result__item">
+                        <label class="result__item-label">LONGITUDE</label>
+                        <span class="result__item-value js-location-lon">-5.9761</span>
+                    </div>
+                </article>
+
+                <button class="btn btn--add js-add-btn">Add location</button>
+            </header>
+
+            <!-- Current session locations -->
+            <div class="list__content">
+                <header class="list__header">
+                    <h2 class="list__title">Session locations</h2>
+                </header>
+
+                <ul class="locationlist js-locationlist">
+
+                    <li class="locationlist__item locationlist__item--header d-none">
+                        <span class="locationlist__item-code">Zip Code</span>
+                        <span class="locationlist__item-name">Name</span>
+                        <span class="locationlist__item-actions">&nbsp;</span>
+                    </li>
+
+                    <li id="noLocation" class="locationlist__item js-location-item">
+                        <span class="locationlist__item-name">
+                            No Added Locations
+                        </span>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <!-- Favourite location list -->
+            <div class="list__content">
+
+                <header class="list__header">
+                    <h2 class="list__title">Favourite locations</h2>
+                </header>
+
+                <ul class="locationlist js-favlist">
+
+                    <li class="locationlist__item locationlist__item--header d-none">
+                        <span class="locationlist__item-code">Zip Code</span>
+                        <span class="locationlist__item-name">Name</span>
+                        <span class="locationlist__item-actions">&nbsp;</span>
+                    </li>
+
+                    <li id="noLocation1" class="locationlist__item js-location-item">
+                        <span class="locationlist__item-name">
+                            No Favourite Locations
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+        </article>
+
+        <article class="locationdetail js-locationdetail">
+
+            <header class="locationdetail__header">
+                <div class="locationdetail__header-actions">
+                    <a href="#" class="locationdetail__close js-locationdetail-close">
+                        <span id="closeTab" class="link__label">Close</span>
+                        <span class="icon link__icon">
+                            <img src="img/ico-close-outline.svg" alt="Close detail">
+                        </span>
+                    </a>
+                    <a href="#" class="locationdetail__addfav link js-locationdetail-fav" data-imdb="">
+                        <span class="icon link__icon">
+                            <img class="js-locationdetail-fav-icon" src="img/ico-fav-outline.svg" alt="Add to favs">
+                        </span>
+                        <span class="link__label js-locationdetail-fav-label">Add to favs</span>
+                    </a>
+                </div>
+
+                <h2 class="locationdetail__title">
+                    <span class="locationdetail__title-code js-locationdetail-code">33008</span>
+                    <span class="locationdetail__title-name js-locationdetail-name">Oviedo</span>
+                    <img class="locationdetail__title-icon js-locationdetail-icon" src="" alt="rain">
+                </h2>
+
+            </header>
+
+            <section class="locationdetail__datasheet js-locationdetail-list">
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Weather</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Temperature</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Feels like temperature</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Min temperature</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Max temperature</h3>
+                    <p class="locationdetail__datasheet-data"> </p>
+
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Pressure</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Humidity</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Visibility</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Sunrise time</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+
+                </div>
+                <div class="locationdetail__datasheet-row">
+                    <h3 class="locationdetail__datasheet-label">Sunset time</h3>
+                    <p class="locationdetail__datasheet-data"></p>
+                </div>
+            </section>
+
+        </article>
+
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>
